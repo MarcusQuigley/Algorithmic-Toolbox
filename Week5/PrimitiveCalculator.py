@@ -3,18 +3,18 @@ import sys
 def calculate(n):
     operations = []
     amount = int(n)
-    counter = 0
-    operations.append(amount)
-    while amount>1:
-        counter = counter + 1
-        if amount % 3 == 0:
-            amount = int(amount / 3)
-        elif amount % 2 == 0:
-            amount = int(amount / 2)
+    total = 1
+    operations.append(total)
+    while total < amount:
+
+        if total * 3 < amount:
+            total = total * 3 
+        elif total * 2 < amount:
+             total = total * 2 
         else:
-            amount = amount - 1
-        operations.append(amount)
-    return reversed(operations)
+            total = total + 1
+        operations.append(total)
+    return operations
 
 if __name__ == '__main__':
     amount = int(sys.stdin.read())
