@@ -17,23 +17,19 @@ def calculate_greedy(n):
     return operations
 
 def calculate_dynamic(number):
-    operations = []
-    for i in range(0, number+1):
-        operations.append(0)
- 
-    for i in range(2,number + 1):
-        plus1 = (operations[i-1])
-        mult2 = sys.maxsize
-        mult3 = sys.maxsize
+    operations = [0] * (number+1)
+    
+    for i in range(2, number+1):
+        oneplus = operations[i-1]
+        twotimes = sys.maxsize
+        threetimes = sys.maxsize
         if i % 3 == 0:
-            mult3 = operations[int(i/3)]
+            threetimes = operations[int(i/3)]
         if i % 2 == 0:
-            mult2 = operations[int(i/2)]
-        minOp = min(plus1, mult2, mult3)
-        operations[i] = minOp + 1
-
+            twotimes = operations[int(i/2)]
+        op = min(oneplus, twotimes, threetimes)
+        operations[i] = op + 1
     return operations
-
 
 
 if __name__ == '__main__':
