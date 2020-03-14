@@ -1,22 +1,6 @@
 import sys
 
-def calculate_greedy(n):
-    operations = []
-    amount = int(n)
-    total = 1
-    operations.append(total)
-    while total < amount:
-
-        if total * 3 < amount:
-            total = total * 3 
-        elif total * 2 < amount:
-             total = total * 2 
-        else:
-            total = total + 1
-        operations.append(total)
-    return operations
-
-def calculate_dynamic(number):
+def min_operations(number):
     operations = [0] * (number+1)
     
     for i in range(2, number+1):
@@ -31,10 +15,34 @@ def calculate_dynamic(number):
         operations[i] = op + 1
     return operations
 
+def operations_list(ops, number):
+    if number == 1:
+        return [1] 
+    result = []
+    n = number
+    while n > 0:
+        result.append(n)
+        if n % 3 > 0 and n % 2 > 0:
+            n = n-1
+        elif n % 3 == 0 and n % 2 == 0:
+            n = n // 3
+        elif n % 2 == 0:
+            if ops[n-1] > ops[int(n//2)]:
+                n = n // 2
+            else:
+                n = n - 1
+        elif n % 3 == 0:
+            if ops[n-1] > ops[int(n//3)]:
+                n = int(n // 3)
+            else:
+                n = n-1
+    return list(reversed(result))
+
 
 if __name__ == '__main__':
     amount = int(sys.stdin.read())
-    operations = list(calculate_greedy(amount))
-    print(len(operations))
-    for op in operations:
-        print(op, end=' ')
+    operations = min_operations(amount)
+    result = operations_list(operations, amount)
+    print(len(result)-1)
+    for r in result:
+        print(r, end=' ')
