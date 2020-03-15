@@ -2,6 +2,8 @@ import unittest
 
 from week5dp.money_change import moneychange
 from week5dp.primitive_calculator import primitivecalculator
+from week5dp.edit_distance import edit_distance
+
 
 class Test_TestWeek5_DynamicPg1(unittest.TestCase):
       
@@ -42,4 +44,35 @@ class Test_TestWeek5_DynamicPg1(unittest.TestCase):
         ops =  primitivecalculator.min_operations(total)
         actual = primitivecalculator.operations_list(ops, total)
         self.assertCountEqual(actual,expected)
+
+    def test_minimum_edit_distance(self):
+        str1 = "abcfg"
+        str2 = "adceg"
+        expected = 2
+        actual = edit_distance.minimum_edit_distance(str1, str2)
+        self.assertEqual(actual, expected)
+
+    def test_minimum_edit_distance2(self):
+        str1 = "ab"
+        str2 = "ab"
+        expected = 0
+        actual = edit_distance.minimum_edit_distance(str1, str2)
+        self.assertEqual(actual, expected)
+
+    def test_minimum_edit_distance3(self):
+        str1 = "short"
+        str2 = "ports"
+        expected = 3
+        actual = edit_distance.minimum_edit_distance(str1, str2)
+        self.assertEqual(actual, expected)
+
+    def test_minimum_edit_distance4(self):
+        str1 = "editing"
+        str2 = "distance"
+        expected = 5
+        actual = edit_distance.minimum_edit_distance(str1, str2)
+        self.assertEqual(actual, expected)
+
+
+
 
