@@ -3,7 +3,7 @@ import unittest
 from week5dp.money_change import moneychange
 from week5dp.primitive_calculator import primitivecalculator
 from week5dp.edit_distance import edit_distance
-
+from week5dp.lcs_of_two import lcs_of_two
 
 class Test_TestWeek5_DynamicPg1(unittest.TestCase):
       
@@ -73,6 +73,23 @@ class Test_TestWeek5_DynamicPg1(unittest.TestCase):
         actual = edit_distance.minimum_edit_distance(str1, str2)
         self.assertEqual(actual, expected)
 
+    def test_lcs_of_two(self):
+        str1 = "275"
+        str2 = "25"
+        expected = 2
+        actual = lcs_of_two.lcs_of_two(str1, str2)
+        self.assertEqual(actual, expected)
 
+    def test_lcs_of_two1(self):
+        str1 = "7"
+        str2 = "1234"
+        expected = 0
+        actual = lcs_of_two.lcs_of_two(str1, str2)
+        self.assertEqual(actual, expected)
 
-
+    def test_lcs_of_two2(self):
+        str1 = "2783"
+        str2 = "5287"
+        expected = 2
+        actual = lcs_of_two.lcs_of_two(str1, str2)
+        self.assertEqual(actual, expected)
