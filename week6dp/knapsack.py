@@ -24,9 +24,26 @@ def knapsack_recursive_with_repetitions_stpete(capacity, weights, values):
             maxVal = max(T[capacity], 
                 knapsack_recursive_with_repetitions_stpete(capacity - weight, weights, values) + values[i])
             T[capacity] = maxVal
-            print("T[{0}] is {1}",capacity,maxVal)
+            print("T[{}] is {}".format(capacity,maxVal))
     return T[capacity]
 
-# def knapsack_with_repetitions_stpete(weights, values, capacity):
+
+def knapsack_without_repetitions_stpete(weights, values, capacity):
+    numWeights = len(weights)
+    resultDict = [[None] * (numWeights + 1) for _ in range(capacity + 1)]
+
+    for slot in range(capacity + 1):
+        resultDict[slot][0] = 0
+    
+    for weight in range(1, numWeights + 1):
+        for slot in range(capacity + 1):
+            resultDict[slot][weight] = resultDict[slot][weight - 1]
+            if slot >= weights[weight - 1]:
+                resultDict[slot][weight] = max(resultDict[slot][weight],
+                resultDict[slot-weights[weight-1]][weight-1] + values[weight-1])
+    return resultDict[capacity][numWeights]
+
+
+    
 
 
