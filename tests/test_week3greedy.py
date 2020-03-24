@@ -2,6 +2,7 @@ import unittest
 
 from week3greedy import moneychange
 from week3greedy import maxlootvalue
+from week3greedy import maxadrevenue
 
 class Test_Week3_Greedy(unittest.TestCase):
       
@@ -30,5 +31,20 @@ class Test_Week3_Greedy(unittest.TestCase):
         expected = 166.6667
         actual = maxlootvalue.max_value_of_loot(capacity, weights, values)
         self.assertEqual(actual,  expected)
-    
+
+    def test_max_ad_revenue(self):
+        ads = [23]
+        revenue = [39]        
+        expected = 897
+        actual = maxadrevenue.max_add_revenue(ads, revenue)
+        self.assertEqual(actual,  expected)
+
+
+    def test_max_ad_revenue2(self):
+        ads = [1,-5,3]
+        revenue = [1,4,-2]        
+        expected = 23
+        actual = maxadrevenue.max_add_revenue(ads, revenue)
+        self.assertEqual(actual,  expected)
+
      
