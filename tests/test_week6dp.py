@@ -1,6 +1,6 @@
 import unittest
 
-#from week6dp import maxgold
+from week6dp import maxgold
 from week6dp import knapsack
 
 class Test_TestWeek6_DynamicPg2(unittest.TestCase):
@@ -34,3 +34,10 @@ class Test_TestWeek6_DynamicPg2(unittest.TestCase):
         expected = 46
         actual = knapsack.knapsack_without_repetitions_stpete(weights, values,capacity)
         self.assertEquals(actual, expected)
+    
+    def test_max_gold(self):
+        capacity = 10
+        weights = (1,4,8)
+        expected = 9
+        actual = maxgold.max_gold(capacity,weights)
+        self.assertEqual(expected, actual)
